@@ -1,6 +1,7 @@
 -e .
 
 # dev requirements
+twine
 pylint
 autopep8
 pytest
