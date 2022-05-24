@@ -15,6 +15,10 @@ You can install this package from:
 - PyPI: `pip install formal-writing-checker`
 - GitHub: `pip install git+https://github.com/MartinoMensio/formal-writing-checker.git`
 
+This package requires the `en_core_web_lg` from spacy, which you can install with one of the following:
+- `formal-writing-checker-install`
+- `python -m spacy download en_core_web_lg`
+
 ## Usage
 
 Once installed, the script is available as
@@ -47,3 +51,10 @@ The behaviour can be customised with the following options (can be seen with `fo
   -p, --ignore-passive-voice      Disable passive voice check  [default:
                                   False]
 ```
+
+
+### Deploy utils
+```bash
+python setup.py sdist
+# upload to pypi
+twine upload dist/formal_writing_checker-0.0.3.tar.gz

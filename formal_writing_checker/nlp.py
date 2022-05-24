@@ -10,7 +10,10 @@ def get_nlp(use_statistical_sentencizer=False):
     global nlp_instance
     if not nlp_instance:
         logging.info('loading nlp')
-        nlp_instance = spacy.load('en_core_web_lg')
+        try:
+            nlp_instance = spacy.load('en_core_web_lg')
+        except:
+            raise ValueError('Model not found. Please run `python -m spacy download en_core_web_lg` the first time')
         if not use_statistical_sentencizer:
             # use rule-based sentencizer
             sentencizer = nlp_instance.add_pipe("sentencizer", first=True)

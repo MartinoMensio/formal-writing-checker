@@ -3,7 +3,16 @@ import logging
 
 from . import nlp
 
+install_app = typer.Typer()
+
+@install_app.command()
+def install_model():
+    logging.info('installing spacy model')
+    import spacy
+    spacy.cli.download('en_core_web_lg')
+
 app = typer.Typer()
+
 
 @app.command()
 def check(text: str = typer.Argument(..., help="Text to check"),
