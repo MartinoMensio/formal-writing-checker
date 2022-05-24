@@ -1,0 +1,6 @@
+-e .
+
+# dev requirements
+pylint
+autopep8
+pytest
