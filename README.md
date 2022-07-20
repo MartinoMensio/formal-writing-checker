@@ -31,7 +31,10 @@ cat > example_long_text.txt <<EOF
 On offering to help the blind man, the man who then stole his car, had not, at that precise moment, had any evil intention, quite the contrary, what he did was nothing more than obey those feelings of generosity and altruism which, as everyone knows, are the two best traits of human nature and to be found in much more hardened criminals than this one, a simple car-thief without any hope of advancing in his profession, exploited by the real owners of this enterprise, for it is they who take advantage of the needs of the poor.
 EOF
 
-formal-writing-checker "$(cat example_long_text.txt)"
+cat example_long_text.txt | formal-writing-checker
+
+# or in a pipe after any other command (e.g. to take as input a latex files)
+detex example_latex.tex | formal-writing-checker
 ```
 
 ## Options
@@ -57,4 +60,4 @@ The behaviour can be customised with the following options (can be seen with `fo
 ```bash
 python setup.py sdist
 # upload to pypi
-twine upload dist/formal_writing_checker-0.0.3.tar.gz
+twine upload dist/formal_writing_checker-0.0.4.tar.gz

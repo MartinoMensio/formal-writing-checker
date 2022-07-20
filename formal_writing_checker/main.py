@@ -1,3 +1,4 @@
+import sys
 import typer
 import logging
 
@@ -15,10 +16,12 @@ app = typer.Typer()
 
 
 @app.command()
-def check(text: str = typer.Argument(..., help="Text to check"),
+def check(text: str = typer.Argument(
+            ... if sys.stdin.isatty() else sys.stdin.read().strip(),
+            help="Text to check"),
         max_sentence_length: int = typer.Option(30, "--max-sentence-length", "-m", help="Maximum sentence length"),
         use_statistical_sentencizer: bool = typer.Option(False, "--use-statistical-sentencizer", "-s", help="Use statistical sentencizer instead of rule-based sentencizer"),
-        ignore_sentence_length: bool = typer.Option(False, "--ignore-sentence-length", "-l", help="Disable passive voice check"),
+        ignore_sentence_length: bool = typer.Option(False, "--ignore-sentence-length", "-l", help="Disable length check"),
         ignore_passive_voice: bool = typer.Option(False, "--ignore-passive-voice", "-p", help="Disable passive voice check")):
     """
     Check if the text satisfies some simple rules for having straightforward formal writing. This includes:
